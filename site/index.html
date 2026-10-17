@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Какой способ поиска позволяет найти целевое число за меньшее количество попыток?</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="hero">
+        <div class="hero-content">
+            <p class="eyebrow">ИССЛЕДОВАТЕЛЬСКИЙ ПРОЕКТ</p>
+            <h1>Как быстро компьютер<br>найдёт загаданное число?</h1>
+            <p class="subtitle">
+                Три способа поиска. Один секретный номер.
+                Проверим, какой алгоритм справится быстрее!
+            </p>
+            <a class="button" href="#game">Попробовать игру ↓</a>
+        </div>
+        <div class="hero-number" aria-hidden="true">?</div>
+    </header>
+
+    <main> 
+        <section id="game" class="section game-section">
+            <p class="eyebrow">01 / ЧЕЛОВЕК ПРОТИВ КОМПЬЮТЕРА</p>
+            <h2>Кто найдет число быстрее?</h2>
+            <p>Одно загаданное число — две стратегии поиска. Сначала попробуй сам, затем посмотрим на алгоритм компьютера!</p>
+
+            <div class="duel-grid">
+                <div class="game-card">
+                    <p class="eyebrow">ИГРОК 1</p>
+                    <h3>🧑 Ты</h3>
+                    <p>Угадай число от 1 до 100.</p>
+
+                    <input id="guess" type="number" min="1" max="100"
+                        placeholder="Твоё число" aria-label="Твоё число">
+                    <button id="guess-button" class="button">Проверить</button>
+                    <p id="message" role="status">Жду твою догадку…</p>
+                    <p>Попыток: <strong id="attempts">0</strong></p>
+                    <button id="restart" class="text-button">Начать заново</button>
+                </div>
+
+                <div class="game-card computer-card">
+                    <p class="eyebrow">ИГРОК 2</p>
+                    <h3>🤖 Компьютер</h3>
+                    <p>Он использует бинарный поиск — каждый раз делит диапазон пополам.</p>
+                    <div id="computer-status" role="status">
+                        Жду, пока ты найдёшь число…
+                    </div>
+                    <p>Попыток: <strong id="computer-attempts">—</strong></p>
+                    <div id="computer-steps"></div>
+                </div>
+            </div>
+
+            <div id="duel-result" class="comparison-card" hidden></div>
+        </section>
+
+        <section class="section">
+            <p class="eyebrow">02 / ТРИ СТРАТЕГИИ</p>
+            <h2>Как можно искать?</h2>
+
+            <div class="method-grid">
+                <article class="method-card">
+                    <span class="method-number">01</span>
+                    <h3>По порядку</h3>
+                    <p>Проверяем числа одно за другим, начиная с первого. Просто, но иногда долго.</p>
+                    <div class="number-line">1 → 2 → 3 → 4 → …</div>
+                </article>
+
+                <article class="method-card">
+                    <span class="method-number">02</span>
+                    <h3>Наугад</h3>
+                    <p>Выбираем случайное число, которое ещё не проверяли. Повезёт — найдём быстро!</p>
+                    <div class="number-line">7 → 42 → 15 → …</div>
+                </article>
+
+                <article class="method-card featured">
+                    <span class="method-number">03</span>
+                    <h3>Пополам</h3>
+                    <p>Проверяем середину диапазона и каждый раз отбрасываем половину неподходящих чисел.</p>
+                    <div class="number-line">1–100 → 51–100 → …</div>
+                </article>
+            </div>
+        </section>
+
+        <section class="section results-section">
+            <p class="eyebrow">03 / РЕЗУЛЬТАТЫ</p>
+            <h2>Что показал эксперимент?</h2>
+            <p>Я провел по 1000 испытаний для каждого метода в каждом диапазоне.</p>
+
+            <div class="result-grid">
+                <article class="result-card">
+                    <h3>Диапазон 1–100</h3>
+                    <img src="../results/chart_100.png"
+                         alt="График среднего количества попыток для диапазона от 1 до 100">
+                </article>
+                <article class="result-card">
+                    <h3>Диапазон 1–1000</h3>
+                    <img src="../results/chart_1000.png"
+                         alt="График среднего количества попыток для диапазона от 1 до 1000">
+                </article>
+            </div>
+
+            <div class="comparison-card">
+                <h3>Два диапазона — три метода</h3>
+                <img src="../results/chart_comparison.png"
+                     alt="Сравнение способов поиска в двух диапазонах">
+            </div>
+        </section>
+
+        <section class="section conclusion">
+            <p class="eyebrow">04 / ВЫВОД</p>
+            <h2>Побеждает поиск пополам!</h2>
+            <p>
+                В моем эксперименте бинарный поиск потребовал намного меньше
+                попыток, чем последовательный и случайный. Чем больше диапазон,
+                тем заметнее разница.
+            </p>
+            <p class="small-note">
+                Результаты случайных испытаний могут немного меняться при каждом запуске.
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <p>Исследовательский проект «Какой способ поиска позволяет найти целевое число за меньшее количество попыток?»</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
